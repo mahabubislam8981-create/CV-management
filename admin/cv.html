@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CV Create - CV Management System</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="cv-container">
+
+        <!-- =========================
+             PAGE 1
+        ========================== -->
+
+        <div class="cv-page">
+
+            <!-- Pad Background -->
+            <img
+                src="../assets/cv-pad.jpg"
+                class="pad-background"
+                alt="CV Pad"
+            >
+
+
+            <!-- =========================
+                 PHOTO
+            ========================== -->
+
+            <div class="photo-area"
+                 style="left: 160mm; top: 18mm; width: 35mm; height: 45mm;">
+
+                <img src="" alt="Profile Photo">
+
+                <div class="photo-placeholder">
+                    ছবি যোগ করুন
+                </div>
+
+                <input
+                    type="file"
+                    class="photo-input"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- =========================
+                 CV INFORMATION
+            ========================== -->
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="name"
+                placeholder="নাম"
+                style="left: 35mm; top: 25mm; width: 110mm;"
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="father"
+                placeholder="পিতার নাম"
+                style="left: 35mm; top: 35mm; width: 110mm;"
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="mother"
+                placeholder="মাতার নাম"
+                style="left: 35mm; top: 45mm; width: 110mm;"
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="dateOfBirth"
+                placeholder="জন্ম তারিখ"
+                style="left: 35mm; top: 55mm; width: 50mm;"
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="phone"
+                placeholder="মোবাইল"
+                style="left: 95mm; top: 55mm; width: 50mm;"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ACTION BUTTONS
+    ========================== -->
+
+    <div class="action-area">
+
+        <button
+            type="button"
+            class="action-btn print-btn">
+            Print
+        </button>
+
+        <button
+            type="button"
+            class="action-btn clear-btn">
+            Clear
+        </button>
+
+    </div>
+
+
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+</html>
