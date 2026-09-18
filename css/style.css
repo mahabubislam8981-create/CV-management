@@ -1,75 +1,162 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    color: #111;
-}
-
-.cv-container {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 20px auto;
-    background: #fff;
-    position: relative;
+    margin: 0;
+    padding: 0;
+    background: #eee;
+    font-family: Arial, "Noto Sans Bengali", sans-serif;
 }
 
 /* =========================
-   PAGE 1 — PAD / TEMPLATE
+   CV PAGE
 ========================= */
 
+.cv-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .cv-page {
+    position: relative;
     width: 210mm;
     height: 297mm;
-    position: relative;
+    background: white;
     overflow: hidden;
 }
 
+/* =========================
+   CV PAD
+========================= */
+
 .pad-background {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    top: 2in;
+    left: 0.3in;
+
+    width: calc(100% - 0.6in);
+    height: calc(100% - 3in);
+
+    object-fit: fill;
     z-index: 1;
 }
 
-/* তথ্যগুলো Pad-এর উপর বসবে */
+/* =========================
+   CV TEXT FIELDS
+========================= */
+
 .cv-field {
     position: absolute;
-    z-index: 2;
-    background: transparent;
+    z-index: 3;
+
     border: none;
     outline: none;
-    color: #111;
+    background: transparent;
+
+    padding: 0;
+    margin: 0;
+
     font-size: 14px;
     line-height: 1.3;
-    padding: 2px 4px;
+
+    color: #000;
 }
 
-.cv-field:focus {
-    background: rgba(255, 255, 255, 0.35);
+/* Individual field positions */
+
+.cv-field[data-field="name"] {
+    top: 83mm;
+    left: 38mm;
+    width: 150mm;
+}
+
+.cv-field[data-field="father"] {
+    top: 91mm;
+    left: 38mm;
+    width: 150mm;
+}
+
+.cv-field[data-field="mother"] {
+    top: 99mm;
+    left: 38mm;
+    width: 150mm;
+}
+
+.cv-field[data-field="dateOfBirth"] {
+    top: 107mm;
+    left: 38mm;
+    width: 70mm;
+}
+
+.cv-field[data-field="nationality"] {
+    top: 115mm;
+    left: 38mm;
+    width: 50mm;
+}
+
+.cv-field[data-field="religion"] {
+    top: 115mm;
+    left: 105mm;
+    width: 40mm;
+}
+
+.cv-field[data-field="maritalStatus"] {
+    top: 123mm;
+    left: 38mm;
+    width: 70mm;
+}
+
+.cv-field[data-field="phone"] {
+    top: 131mm;
+    left: 38mm;
+    width: 70mm;
+}
+
+.cv-field[data-field="email"] {
+    top: 139mm;
+    left: 38mm;
+    width: 100mm;
+}
+
+.cv-field[data-field="address"] {
+    top: 147mm;
+    left: 38mm;
+    width: 150mm;
+    height: 20mm;
+
+    resize: none;
 }
 
 /* =========================
-   PHOTO BOX
+   PHOTO
 ========================= */
 
 .photo-area {
     position: absolute;
-    z-index: 3;
-    overflow: hidden;
+
+    top: 55mm;
+    right: 15mm;
+
+    width: 35mm;
+    height: 45mm;
+
+    border: 1px dashed #999;
+    background: rgba(255, 255, 255, 0.25);
+
+    z-index: 4;
+
     cursor: pointer;
+    overflow: hidden;
 }
 
 .photo-area img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
     display: none;
 }
 
@@ -80,14 +167,14 @@ body {
 .photo-placeholder {
     width: 100%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
     font-size: 11px;
-    color: #777;
-    background: rgba(255, 255, 255, 0.35);
-    border: 1px dashed #777;
+    color: #555;
 }
 
 .photo-area.has-photo .photo-placeholder {
@@ -99,35 +186,59 @@ body {
 }
 
 /* =========================
-   OTHER PAGES
-========================= */
-
-.cv-page:not(:first-child) {
-    background: #fff;
-}
-
-/* =========================
    BUTTONS
 ========================= */
 
 .action-area {
     width: 210mm;
     margin: 15px auto;
+
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
 .action-btn {
-    padding: 10px 18px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 22px;
+
     font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.action-btn:hover {
-    opacity: 0.9;
+.print-btn {
+    background: #222;
+    color: white;
+}
+
+.clear-btn {
+    background: #ddd;
+    color: #111;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 700px) {
+
+    body {
+        background: #ddd;
+    }
+
+    .cv-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .cv-page {
+        flex-shrink: 0;
+    }
+
+    .action-area {
+        width: 100%;
+    }
 }
 
 /* =========================
@@ -135,65 +246,48 @@ body {
 ========================= */
 
 @media print {
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
     body {
-        background: #fff;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .cv-container {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cv-page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
     }
 
     .action-area {
         display: none;
     }
 
-    .cv-container {
-        margin: 0;
-        width: 210mm;
+    .cv-field {
+        color: #000;
     }
 
-    .cv-page {
-        page-break-after: always;
-        margin: 0;
-    }
-
-    .cv-field:focus {
+    .photo-area {
+        border: none;
         background: transparent;
     }
 
-    @page {
-        size: A4;
-        margin: 0;
+    .photo-placeholder {
+        display: none;
     }
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media screen and (max-width: 800px) {
-    .cv-container {
-        transform-origin: top left;
-        margin-left: 0;
-    }
-
-    .action-area {
-        width: 100%;
-        flex-wrap: wrap;
-    }
-}
-/* =========================
-   CV PAD PRINT AREA
-========================= */
-
-.cv-page {
-    padding-top: 2in;
-    padding-left: 0.3in;
-    padding-right: 0.3in;
-    padding-bottom: 1in;
-}
-
-.pad-background {
-    position: absolute;
-    top: 2in;
-    left: 0.3in;
-    width: calc(100% - 0.6in);
-    height: calc(100% - 3in);
-    object-fit: fill;
 }
