@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CV Create - CV Management System</title>
+    <title>CV Create</title>
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,13 +13,9 @@
 
     <div class="cv-container">
 
-        <!-- =========================
-             PAGE 1
-        ========================== -->
-
         <div class="cv-page">
 
-            <!-- Pad Background -->
+            <!-- CV PAD -->
             <img
                 src="../assets/cv-pad.jpg"
                 class="pad-background"
@@ -27,24 +23,10 @@
             >
 
 
-            <!-- =========================
-                 PHOTO AREA
-            ========================== -->
+            <!-- PHOTO -->
+            <div class="photo-area">
 
-            <div
-                class="photo-area"
-                style="
-                    left: 160mm;
-                    top: 18mm;
-                    width: 35mm;
-                    height: 45mm;
-                "
-            >
-
-                <img
-                    src=""
-                    alt="Profile Photo"
-                >
+                <img src="" alt="Profile Photo">
 
                 <div class="photo-placeholder">
                     ছবি যোগ করুন
@@ -60,7 +42,7 @@
 
 
             <!-- =========================
-                 INFORMATION
+                 PERSONAL INFORMATION
             ========================== -->
 
             <input
@@ -68,11 +50,6 @@
                 class="cv-field"
                 data-field="name"
                 placeholder="নাম"
-                style="
-                    left: 35mm;
-                    top: 25mm;
-                    width: 110mm;
-                "
             >
 
             <input
@@ -80,11 +57,6 @@
                 class="cv-field"
                 data-field="father"
                 placeholder="পিতার নাম"
-                style="
-                    left: 35mm;
-                    top: 35mm;
-                    width: 110mm;
-                "
             >
 
             <input
@@ -92,11 +64,6 @@
                 class="cv-field"
                 data-field="mother"
                 placeholder="মাতার নাম"
-                style="
-                    left: 35mm;
-                    top: 45mm;
-                    width: 110mm;
-                "
             >
 
             <input
@@ -104,24 +71,48 @@
                 class="cv-field"
                 data-field="dateOfBirth"
                 placeholder="জন্ম তারিখ"
-                style="
-                    left: 35mm;
-                    top: 55mm;
-                    width: 50mm;
-                "
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="nationality"
+                placeholder="জাতীয়তা"
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="religion"
+                placeholder="ধর্ম"
+            >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="maritalStatus"
+                placeholder="বৈবাহিক অবস্থা"
             >
 
             <input
                 type="text"
                 class="cv-field"
                 data-field="phone"
-                placeholder="মোবাইল"
-                style="
-                    left: 95mm;
-                    top: 55mm;
-                    width: 50mm;
-                "
+                placeholder="মোবাইল নম্বর"
             >
+
+            <input
+                type="text"
+                class="cv-field"
+                data-field="email"
+                placeholder="ই-মেইল"
+            >
+
+            <textarea
+                class="cv-field"
+                data-field="address"
+                placeholder="ঠিকানা"
+            ></textarea>
 
         </div>
 
@@ -129,7 +120,7 @@
 
 
     <!-- =========================
-         ACTION BUTTONS
+         BUTTONS
     ========================== -->
 
     <div class="action-area">
