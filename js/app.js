@@ -1,153 +1,179 @@
-document.addEventListener("DOMContentLoaded", () => {
-    /* =========================
-       PHOTO UPLOAD
-    ========================= */
+/* =========================
+   CV PHOTO
+========================= */
 
-    const photoArea = document.querySelector(".photo-area");
-    const photoInput = document.querySelector(".photo-input");
-    const photoImage = document.querySelector(".photo-area img");
+const photoArea = document.querySelector(".photo-area");
+const photoInput = document.querySelector(".photo-input");
+const photoImage = document.querySelector(".photo-area img");
 
-    if (photoArea && photoInput && photoImage) {
+if (photoArea && photoInput && photoImage) {
 
-        photoArea.addEventListener("click", () => {
-            photoInput.click();
-        });
+    photoArea.addEventListener("click", () => {
+        photoInput.click();
+    });
 
-        photoInput.addEventListener("change", (event) => {
-            const file = event.target.files[0];
+    photoInput.addEventListener("change", (event) => {
 
-            if (!file) return;
+        const file = event.target.files[0];
 
-            if (!file.type.startsWith("image/")) {
-                alert("দয়া করে একটি ছবি নির্বাচন করুন।");
-                return;
-            }
-
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                photoImage.src = e.target.result;
-                photoArea.classList.add("has-photo");
-            };
-
-            reader.readAsDataURL(file);
-        });
-    }
-
-
-    /* =========================
-       CAMERA SUPPORT
-    ========================= */
-
-    const cameraButton = document.querySelector(".camera-btn");
-
-    if (cameraButton && photoInput) {
-
-        cameraButton.addEventListener("click", () => {
-            photoInput.setAttribute("capture", "environment");
-            photoInput.click();
-        });
-    }
-
-
-    /* =========================
-       FILE UPLOAD SUPPORT
-    ========================= */
-
-    const fileButton = document.querySelector(".file-btn");
-
-    if (fileButton && photoInput) {
-
-        fileButton.addEventListener("click", () => {
-            photoInput.removeAttribute("capture");
-            photoInput.click();
-        });
-    }
-
-
-    /* =========================
-       AUTO SAVE FORM DATA
-    ========================= */
-
-    const fields = document.querySelectorAll(".cv-field");
-
-    fields.forEach((field) => {
-
-        const fieldName = field.dataset.field;
-
-        if (!fieldName) return;
-
-        const savedValue = localStorage.getItem(
-            "cv_" + fieldName
-        );
-
-        if (savedValue !== null) {
-            field.value = savedValue;
+        if (!file) {
+            return;
         }
 
-        field.addEventListener("input", () => {
+        if (!file.type.startsWith("image/")) {
+            alert("দয়া করে একটি ছবি নির্বাচন করুন।");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+
+            photoImage.src = event.target.result;
+
+            photoArea.classList.add("has-photo");
+
             localStorage.setItem(
-                "cv_" + fieldName,
-                field.value
+                "cv_profile_photo",
+                event.target.result
             );
-        });
+        };
+
+        reader.readAsDataURL(file);
     });
 
 
-    /* =========================
-       CLEAR CV DATA
-    ========================= */
+    /* Load saved photo */
 
-    const clearButton = document.querySelector(".clear-btn");
+    const savedPhoto =
+        localStorage.getItem("cv_profile_photo");
 
-    if (clearButton) {
+    if (savedPhoto) {
 
-        clearButton.addEventListener("click", () => {
+        photoImage.src = savedPhoto;
 
-            const confirmClear = confirm(
-                "আপনি কি CV-এর সব তথ্য মুছে ফেলতে চান?"
-            );
+        photoArea.classList.add("has-photo");
+    }
+}
 
-            if (!confirmClear) return;
 
-            fields.forEach((field) => {
-                field.value = "";
+/* =========================
+   CV INFORMATION
+========================= */
 
-                const fieldName = field.dataset.field;
+const fields =
+    document.querySelectorAll(".cv-field");
 
-                if (fieldName) {
-                    localStorage.removeItem(
-                        "cv_" + fieldName
-                    );
-                }
-            });
+fields.forEach((field) => {
 
-            if (photoImage) {
-                photoImage.src = "";
-            }
+    const fieldName =
+        field.dataset.field;
 
-            if (photoArea) {
-                photoArea.classList.remove("has-photo");
-            }
-
-            if (photoInput) {
-                photoInput.value = "";
-            }
-        });
+    if (!fieldName) {
+        return;
     }
 
 
-    /* =========================
-       PRINT CV
-    ========================= */
+    /* Load saved value */
 
-    const printButton = document.querySelector(".print-btn");
+    const savedValue =
+        localStorage.getItem("cv_" + fieldName);
 
-    if (printButton) {
-
-        printButton.addEventListener("click", () => {
-            window.print();
-        });
+    if (savedValue !== null) {
+        field.value = savedValue;
     }
+
+
+    /* Save while typing */
+
+    field.addEventListener("input", () => {
+
+        localStorage.setItem(
+            "cv_" + fieldName,
+            field.value
+        );
+
+    });
 
 });
+
+
+/* =========================
+   PRINT
+========================= */
+
+const printButton =
+    document.querySelector(".print-btn");
+
+if (printButton) {
+
+    printButton.addEventListener("click", () => {
+        window.print();
+    });
+
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+const clearButton =
+    document.querySelector(".clear-btn");
+
+if (clearButton) {
+
+    clearButton.addEventListener("click", () => {
+
+        const confirmClear = confirm(
+            "CV-এর সব তথ্য ও ছবি মুছে ফেলবেন?"
+        );
+
+        if (!confirmClear) {
+            return;
+        }
+
+
+        /* Clear text */
+
+        fields.forEach((field) => {
+
+            field.value = "";
+
+            const fieldName =
+                field.dataset.field;
+
+            if (fieldName) {
+
+                localStorage.removeItem(
+                    "cv_" + fieldName
+                );
+
+            }
+
+        });
+
+
+        /* Clear photo */
+
+        localStorage.removeItem(
+            "cv_profile_photo"
+        );
+
+        if (photoImage) {
+            photoImage.src = "";
+        }
+
+        if (photoArea) {
+            photoArea.classList.remove(
+                "has-photo"
+            );
+        }
+
+        if (photoInput) {
+            photoInput.value = "";
+        }
+
+    });
+
+}
