@@ -112,7 +112,22 @@ if (printButton) {
     });
 
 }
+/* =========================
+   PDF
+========================= */
 
+const pdfButton =
+    document.querySelector(".pdf-btn");
+
+if (pdfButton) {
+
+    pdfButton.addEventListener("click", () => {
+
+        window.print();
+
+    });
+
+}
 
 /* =========================
    CLEAR
