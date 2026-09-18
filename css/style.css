@@ -178,3 +178,22 @@ body {
         flex-wrap: wrap;
     }
 }
+/* =========================
+   CV PAD PRINT AREA
+========================= */
+
+.cv-page {
+    padding-top: 2in;
+    padding-left: 0.3in;
+    padding-right: 0.3in;
+    padding-bottom: 1in;
+}
+
+.pad-background {
+    position: absolute;
+    top: 2in;
+    left: 0.3in;
+    width: calc(100% - 0.6in);
+    height: calc(100% - 3in);
+    object-fit: fill;
+}
