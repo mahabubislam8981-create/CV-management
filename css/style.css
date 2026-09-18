@@ -291,3 +291,106 @@ body {
         display: none;
     }
 }
+/* =========================
+   CV TEXT ALIGNMENT
+========================= */
+
+.cv-field {
+    font-family: "Noto Sans Bengali", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #000;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    padding: 0;
+    margin: 0;
+
+    z-index: 5;
+}
+
+/* নাম */
+
+.cv-field[data-field="name"] {
+    top: 82mm;
+    left: 40mm;
+    width: 135mm;
+}
+
+/* পিতার নাম */
+
+.cv-field[data-field="father"] {
+    top: 90mm;
+    left: 40mm;
+    width: 135mm;
+}
+
+/* মাতার নাম */
+
+.cv-field[data-field="mother"] {
+    top: 98mm;
+    left: 40mm;
+    width: 135mm;
+}
+
+/* জন্ম তারিখ */
+
+.cv-field[data-field="dateOfBirth"] {
+    top: 106mm;
+    left: 40mm;
+    width: 65mm;
+}
+
+/* জাতীয়তা */
+
+.cv-field[data-field="nationality"] {
+    top: 114mm;
+    left: 40mm;
+    width: 45mm;
+}
+
+/* ধর্ম */
+
+.cv-field[data-field="religion"] {
+    top: 114mm;
+    left: 105mm;
+    width: 40mm;
+}
+
+/* বৈবাহিক অবস্থা */
+
+.cv-field[data-field="maritalStatus"] {
+    top: 122mm;
+    left: 40mm;
+    width: 65mm;
+}
+
+/* মোবাইল */
+
+.cv-field[data-field="phone"] {
+    top: 130mm;
+    left: 40mm;
+    width: 70mm;
+}
+
+/* ই-মেইল */
+
+.cv-field[data-field="email"] {
+    top: 138mm;
+    left: 40mm;
+    width: 100mm;
+}
+
+/* ঠিকানা */
+
+.cv-field[data-field="address"] {
+    top: 146mm;
+    left: 40mm;
+    width: 135mm;
+    height: 22mm;
+
+    resize: none;
+    line-height: 1.5;
+}
