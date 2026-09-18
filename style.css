@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    min-height: 100vh;
+}
+
+.welcome-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.welcome-card {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.welcome-card h1 {
+    font-size: 30px;
+    color: #1f2937;
+    margin-bottom: 12px;
+}
+
+.welcome-card p {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.access-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.access-btn {
+    display: block;
+    padding: 14px 20px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.access-btn:hover {
+    background: #1d4ed8;
+}
